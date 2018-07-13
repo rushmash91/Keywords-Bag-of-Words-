@@ -1,6 +1,7 @@
 import PyPDF2
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from tabulate import tabulate
 import nltk
 import string
 import matplotlib.pyplot as plt
@@ -53,7 +54,7 @@ def filter_data(all_string):
     all_string = all_string.lower()
 
     removers = ['all', 'rights', 'reserved', 'basics', 'jguru.com', '1996-2003', '.java', '©', '//', "''", "``", '...', '/*',
-                '==', '--', '1', '5', '3', '2']
+                '==', '--', '1', '5', '3', '2', '0']
     for remove in removers:
         all_string = all_string.replace(remove, '')
 
@@ -99,8 +100,6 @@ def plot(keywords):
         x.append(tempx)
         y.append(tempy)
 
-    print(x)
-    print(y)
     y_pos = np.arange(len(x))
 
     plt.bar(y_pos, y, align='center', alpha=0.5)
@@ -112,10 +111,15 @@ def plot(keywords):
 
 
 def main():
+    #
     filename = 'JavaBasics-notes.pdf'
     text = extract_text_from_pdf(filename=filename)
     keywords = filter_data(text)
     plot(keywords[:12])
+    del keywords[1]
+    for keyword in keywords:
+        list(keyword)
+    print(tabulate(keywords, headers=['Keyword', 'Frequency']))
 
 
 if __name__ == '__main__':
