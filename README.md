@@ -14,7 +14,7 @@ is also given as output containing **Top 40** Keywords(tabulate).
 |**Keyword**  | **Frequency**
 |------------ | -----------
 |data         |         43
-|java         |         41
+|java*        |         41
 |button       |         35
 |int          |         29
 |code         |         28 
@@ -49,6 +49,8 @@ is also given as output containing **Top 40** Keywords(tabulate).
 |make         |          9
 |file         |          9
 |reference    |          9
+
+##### * As the word "java" is present in the header and footer of every page(21 pages), it has 42 extra instances. Hence ther are only 41 true instances(83 - 42).  
 
 ## Dependencies
 
