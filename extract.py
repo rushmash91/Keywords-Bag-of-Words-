@@ -6,6 +6,7 @@ import nltk
 import string
 import matplotlib.pyplot as plt
 import numpy as np
+
 plt.rcdefaults()
 
 
@@ -34,6 +35,7 @@ def extract_text_from_pdf(filename):
         page = reader.getPage(pages)
         add = page.extractText()
         all_string += add
+    # all the text in the PDF is assigned to all_strings except the last two blank ones
     return all_string
 
 
@@ -52,9 +54,12 @@ def filter_data(all_string):
        """
 
     all_string = all_string.lower()
+    # converted to lower case
 
-    removers = ['all', 'rights', 'reserved', 'basics', 'jguru.com', '1996-2003', '.java', '©', '//', "''", "``", '...', '/*',
-                '==', '--', '1', '5', '3', '2', '0']
+    removers = ['all', 'rights', 'reserved', 'basics', 'jguru.com', '1996-2003', '.java', '©', '//', "''", "``", '...',
+                '/*', '==', '--', '1', '5', '3', '2', '0']
+    # removing header, timestamp and common stopwords
+
     for remove in removers:
         all_string = all_string.replace(remove, '')
 
@@ -64,15 +69,17 @@ def filter_data(all_string):
 
     filtered = [word for word in words if not word in stop_words]
     filtered = [word for word in filtered if not word in set(string.punctuation)]
+    # removing punctuations and nltk stopwords
 
     freq = nltk.FreqDist(filtered)
-
     keywords = freq.most_common(40)
+    # calculating TOP 40 keywords based on TF(term frequency)
 
     # eliminating any stopwords left
     del keywords[2:4]
     del keywords[7]
 
+    # returning a copy of the list
     return keywords[:]
 
 
@@ -91,9 +98,10 @@ def plot(keywords):
     x = []
     y = []
 
-    #deleating new as its not a keyword
+    # deleting new as its not a keyword
     del keywords[1]
 
+    # Separating X,Y Coordinates from the Keywords list
     for keyword in keywords:
         tempx = keyword[0]
         tempy = keyword[1]
@@ -102,6 +110,7 @@ def plot(keywords):
 
     y_pos = np.arange(len(x))
 
+    # Plotting the graph
     plt.bar(y_pos, y, align='center', alpha=0.5)
     plt.xticks(y_pos, tuple(x))
     plt.ylabel('Frequency')
@@ -111,12 +120,14 @@ def plot(keywords):
 
 
 def main():
-    #
+    # Providing the file and processing via the functions
     filename = 'JavaBasics-notes.pdf'
     text = extract_text_from_pdf(filename=filename)
     keywords = filter_data(text)
     plot(keywords[:12])
     del keywords[1]
+
+    # Printing a Table of the Keywords along with their Frequency
     for keyword in keywords:
         list(keyword)
     print(tabulate(keywords, headers=['Keyword', 'Frequency']))
