@@ -50,7 +50,7 @@ is also given as output containing **Top 40** Keywords(tabulate).
 |file         |          9
 |reference    |          9
 
-##### * As the word "java" is present in the header and footer of every page(21 pages), it has 42 extra instances. Hence ther are only 41 true instances(83 - 42).  
+##### * The word "java" is present in the header and footer of every page (21 pages), it has 42 extra instances. Hence, there are only 41 true instances(83 - 42).  
 
 ## Dependencies
 
