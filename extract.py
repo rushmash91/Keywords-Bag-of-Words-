@@ -9,6 +9,16 @@ plt.rcdefaults()
 
 
 def extract_text_from_pdf(filename):
+    """
+    Converts PDF text data to string.
+
+    Parameters:
+    file path (str): path to the pdf file to be used
+
+    Returns:
+    str: cll the text obtained from the pdf
+    """
+
     pdffile = open(filename, 'rb')
     # rb because pdfs are binary files
 
@@ -27,6 +37,19 @@ def extract_text_from_pdf(filename):
 
 
 def filter_data(all_string):
+    """
+       Filters the String provided .
+
+        Removes Stopwords(via NLTK), Punctuations and other Non-Keywords not in the NLTK
+
+       Parameters:
+       text to be filtered (str)
+
+       Returns:
+       (x, y) Keywords and Frequency (List of Tuples(len = 2))
+
+       """
+
     all_string = all_string.lower()
 
     removers = ['all', 'rights', 'reserved', 'basics', 'jguru.com', '1996-2003', '.java', '©', '//', "''", "``", '...', '/*',
@@ -44,14 +67,31 @@ def filter_data(all_string):
     freq = nltk.FreqDist(filtered)
 
     keywords = freq.most_common(40)
+
+    # eliminating any stopwords left
     del keywords[2:4]
     del keywords[7]
-    return keywords
+
+    return keywords[:]
 
 
 def plot(keywords):
+    """
+       Plots a Bar graph of Words to their Frequency.
+
+       Parameters:
+       (x, y) Coordinates (List of Tuples(len = 2))
+
+       Returns:
+       Bar graph (png) and List of Coordinates(x, y)
+
+       """
+
     x = []
     y = []
+
+    #deleating new as its not a keyword
+    del keywords[1]
 
     for keyword in keywords:
         tempx = keyword[0]
