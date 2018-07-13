@@ -79,6 +79,10 @@ def filter_data(all_string):
     del keywords[2:4]
     del keywords[7]
 
+    # As java is present in the header and footer of each page (21 pages * 2 = 42) there are 42 extra instances of java
+    keywords = [list(keyword) for keyword in keywords]
+    keywords[0][1] = keywords[0][1] - 42
+    keywords[0], keywords[2] = keywords[2], keywords[0]
     # returning a copy of the list
     return keywords[:]
 

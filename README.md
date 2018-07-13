@@ -7,14 +7,14 @@ etc after being **Tokenized** with the help of nltk, strings and numpy. Term Fre
 is also given as output containing **Top 40** Keywords(tabulate).
 
 
-![alt text](bargraph_for_top_12_keywords.png "Frequncy of TOP 11 Keywords")
+![alt text](myplot.png "Frequncy of TOP 11 Keywords")
 
 ### Top 40 Words
 
 |**Keyword**  | **Frequency**
 |------------ | -----------
-|java         |         83
 |data         |         43
+|java         |         41
 |button       |         35
 |int          |         29
 |code         |         28 
