@@ -1,5 +1,4 @@
-# Exam_Preparation_Online
-### Keywords based on TF(Term Frequency)
+# Keywords based on TF(Term Frequency)
 
 ## Overview
 The script(main.py) extracts all text from the given **PDF** using PyPDF2. The text is then filtered for _Stopwords_, _Punctuations_ and _Header_
