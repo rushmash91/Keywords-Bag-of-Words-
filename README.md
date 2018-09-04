@@ -1,7 +1,7 @@
-# Keywords based on TF(Term Frequency)
+# Keyword (Bag of Words)
 
 ## Overview
-The script(main.py) extracts all text from the given **PDF** using PyPDF2. The text is then filtered for _Stopwords_, _Punctuations_ and _Header_
+The script(main.py) extracts all text From the given **PDF** using PyPDF2. The text is then filtered for _Stopwords_, _Punctuations_ and _Header_
 etc after being **Tokenized** with the help of nltk, strings and numpy. Term Frequency of the **Top 11** Keywords is calculated and plotted in a bar graph via matplotlib. A table 
 is also given as output containing **Top 40** Keywords(tabulate).
 
