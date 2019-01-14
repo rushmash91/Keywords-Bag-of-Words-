@@ -2,13 +2,13 @@
 
 ## Overview
 The script(main.py) extracts all text From the given **PDF** using PyPDF2. The text is then filtered for _Stopwords_, _Punctuations_ and _Header_
-etc after being **Tokenized** with the help of nltk, strings and numpy. Term Frequency of the **Top 11** Keywords is calculated and plotted in a bar graph via matplotlib. A table 
+etc after being **Tokenized** with the help of nltk, strings and numpy. Term Frequency of the Keywords is calculated and plotted in a bar graph via matplotlib. A table 
 is also given as output containing **Top 10** Keywords(tabulate).
 
 
 ![alt text](myplot.png "Frequncy of TOP 11 Keywords")
 
-### Top 40 Words
+### Top 10 Words
 
 |**Keyword**  | **Frequency**
 |------------ | -----------
